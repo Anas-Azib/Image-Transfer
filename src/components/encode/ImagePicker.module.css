@@ -1,0 +1,56 @@
+.zone {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: 20rem;
+  padding: var(--space-7) var(--space-5);
+  text-align: center;
+  background: var(--surface-raised);
+  border: 1px dashed var(--line-strong);
+  border-radius: var(--radius-xl);
+  transition:
+    border-color var(--duration-fast) var(--ease-out),
+    background-color var(--duration-fast) var(--ease-out);
+}
+
+.dragging {
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: var(--text-tertiary);
+}
+
+.title {
+  font-size: var(--text-section);
+  font-weight: 600;
+}
+
+.hint {
+  max-width: 24rem;
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+.formats {
+  font-size: var(--text-micro);
+  color: var(--text-tertiary);
+}

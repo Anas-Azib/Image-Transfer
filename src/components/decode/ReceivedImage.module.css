@@ -1,0 +1,65 @@
+.result {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 2rem;
+  height: 2rem;
+  color: var(--positive);
+  background: var(--positive-soft);
+  border-radius: 50%;
+}
+
+.checkIcon {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.title {
+  font-size: var(--text-section);
+  font-weight: 600;
+}
+
+.subtitle {
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+.figure {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: var(--surface-sunken);
+  border-radius: var(--radius-md);
+}
+
+.image {
+  max-width: 100%;
+  max-height: 26rem;
+  object-fit: contain;
+  border-radius: var(--radius-sm);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}

@@ -1,0 +1,76 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.headline {
+  font-size: var(--text-title);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-tight);
+}
+
+.headlineTotal {
+  color: var(--text-tertiary);
+}
+
+.subhead {
+  margin-top: var(--space-1);
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+.quality {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--line);
+}
+
+.qualityLabel {
+  font-size: var(--text-micro);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+}
+
+.bars {
+  display: flex;
+  gap: 0.1875rem;
+  align-items: flex-end;
+  height: 1rem;
+}
+
+.bar {
+  width: 0.25rem;
+  background: var(--line-strong);
+  border-radius: 1px;
+}
+
+.barOn {
+  background: var(--positive);
+}
+
+.missing {
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+.missingList {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  color: var(--text-tertiary);
+  word-break: break-word;
+}
+
+.fileName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

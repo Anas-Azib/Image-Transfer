@@ -1,0 +1,20 @@
+.page {
+  max-width: var(--reading-width);
+  padding: var(--space-9) var(--space-5);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.title {
+  font-size: var(--text-title);
+  font-weight: 600;
+}
+
+.body {
+  margin-top: var(--space-4);
+  color: var(--text-secondary);
+}
+
+.action {
+  margin-top: var(--space-5);
+}

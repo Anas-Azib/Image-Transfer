@@ -1,0 +1,57 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.label {
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+.value {
+  font-size: var(--text-small);
+  font-variant-numeric: tabular-nums;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.track {
+  position: relative;
+  height: 0.375rem;
+  overflow: hidden;
+  background: var(--surface-sunken);
+  border-radius: var(--radius-pill);
+}
+
+.fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: inherit;
+  transition: width var(--duration-base) var(--ease-out);
+}
+
+.positive .fill {
+  background: var(--positive);
+}
+
+.indeterminate .fill {
+  width: 35% !important;
+  animation: slide 1.4s var(--ease-in-out) infinite;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(320%);
+  }
+}

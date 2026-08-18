@@ -1,0 +1,141 @@
+.stage {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 20rem;
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.display {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  aspect-ratio: 1;
+  padding: var(--space-4);
+  background: var(--symbol-light);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.fullscreen .display {
+  border-radius: 0;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/**
+ * The canvas backing store is always square, so the element must be too.
+ * Sizing it with width:100%/height:100% would stretch the symbol whenever the
+ * container is not square — which is exactly what happens in the full-screen
+ * layout — and a non-square module grid does not decode.
+ */
+.canvas {
+  aspect-ratio: 1;
+  width: auto;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  image-rendering: pixelated;
+}
+
+.pausedVeil {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-section);
+  font-weight: 600;
+  color: var(--text-on-inverse);
+  background: color-mix(in srgb, var(--surface-inverse) 72%, transparent);
+  border-radius: inherit;
+}
+
+.side {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  padding: var(--space-5);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.frameCounter {
+  font-size: var(--text-title);
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: var(--tracking-tight);
+}
+
+.frameCounterTotal {
+  color: var(--text-tertiary);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.guidance {
+  font-size: var(--text-small);
+  line-height: 1.55;
+  color: var(--text-secondary);
+}
+
+/* Fullscreen presentation: the symbol takes the whole viewport, with a slim
+   status strip so the sender can still see progress from across the room. */
+.fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  grid-template-columns: none;
+  gap: 0;
+  /* The grid layout above sets `align-items: start`, which in a column flexbox
+     means "do not stretch across the cross axis" — leaving both children as wide
+     as their content instead of as wide as the viewport. */
+  align-items: stretch;
+  background: var(--symbol-light);
+}
+
+.fullscreen .display {
+  flex: 1;
+  min-height: 0;
+  aspect-ratio: auto;
+}
+
+.fullscreen .side {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-4);
+  border: none;
+  border-top: 1px solid var(--line);
+  border-radius: 0;
+  padding: var(--space-3) var(--space-5);
+  background: var(--surface);
+}
+
+.fullscreen .frameCounter {
+  font-size: var(--text-lead);
+}
+
+.fullscreen .guidance,
+.fullscreen .statsBlock {
+  display: none;
+}
+
+.fullscreen .controls {
+  margin-left: auto;
+}
+
+@media (max-width: 60rem) {
+  .stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

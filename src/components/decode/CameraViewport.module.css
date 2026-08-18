@@ -1,0 +1,160 @@
+.viewport {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: #000;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.reticle {
+  position: absolute;
+  inset: 12%;
+  border-radius: var(--radius-md);
+}
+
+.corner {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border: 3px solid rgba(255, 255, 255, 0.85);
+  transition: border-color var(--duration-base) var(--ease-out);
+}
+
+.topLeft {
+  top: 0;
+  left: 0;
+  border-right: none;
+  border-bottom: none;
+  border-top-left-radius: var(--radius-md);
+}
+
+.topRight {
+  top: 0;
+  right: 0;
+  border-left: none;
+  border-bottom: none;
+  border-top-right-radius: var(--radius-md);
+}
+
+.bottomLeft {
+  bottom: 0;
+  left: 0;
+  border-right: none;
+  border-top: none;
+  border-bottom-left-radius: var(--radius-md);
+}
+
+.bottomRight {
+  bottom: 0;
+  right: 0;
+  border-left: none;
+  border-top: none;
+  border-bottom-right-radius: var(--radius-md);
+}
+
+.partial .corner {
+  border-color: #f0b429;
+}
+
+.locked .corner {
+  border-color: #4ad07d;
+}
+
+/* A sweep that only runs while nothing has been detected, so it reads as
+   "looking" rather than as decoration. */
+.sweep {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.7), transparent);
+  animation: sweep 2.4s var(--ease-in-out) infinite;
+}
+
+@keyframes sweep {
+  0%,
+  100% {
+    top: 14%;
+    opacity: 0;
+  }
+  10%,
+  90% {
+    opacity: 1;
+  }
+  50% {
+    top: 84%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep {
+    display: none;
+  }
+}
+
+.badge {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-1) var(--space-3);
+  font-size: var(--text-micro);
+  font-weight: 600;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(8px);
+  border-radius: var(--radius-pill);
+}
+
+.dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+.dotNone {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.dotPartial {
+  color: #f0b429;
+}
+
+.dotLocked {
+  color: #4ad07d;
+}
+
+.placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-3);
+  padding: var(--space-6);
+  text-align: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: var(--text-small);
+}
+
+.placeholderIcon {
+  width: 2.5rem;
+  height: 2.5rem;
+}

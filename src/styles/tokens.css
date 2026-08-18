@@ -1,0 +1,120 @@
+/**
+ * Design tokens.
+ *
+ * A deliberately small palette: two neutrals for surfaces, three for text, one
+ * accent. Hierarchy is carried by type scale and whitespace rather than by
+ * colour, which is what keeps a dense technical readout calm.
+ */
+
+:root {
+  color-scheme: light dark;
+
+  /* Type ------------------------------------------------------------------ */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', Roboto, Helvetica, Arial,
+    sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, monospace;
+
+  --text-hero: clamp(2.75rem, 7vw, 4.5rem);
+  --text-title: clamp(2rem, 4.5vw, 3rem);
+  --text-section: clamp(1.375rem, 2.5vw, 1.75rem);
+  --text-lead: clamp(1.0625rem, 1.6vw, 1.3125rem);
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+  --text-micro: 0.75rem;
+
+  --tracking-tight: -0.022em;
+  --tracking-hero: -0.035em;
+  --tracking-wide: 0.06em;
+
+  /* Space ----------------------------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4rem;
+  --space-9: 6rem;
+
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1.125rem;
+  --radius-xl: 1.5rem;
+  --radius-pill: 62.5rem;
+
+  --content-width: 68rem;
+  --reading-width: 34rem;
+
+  /* Colour ---------------------------------------------------------------- */
+  --surface: #fbfbfd;
+  --surface-raised: #ffffff;
+  --surface-sunken: #f2f2f5;
+  --surface-inverse: #1d1d1f;
+
+  --text-primary: #1d1d1f;
+  --text-secondary: #55555c;
+  --text-tertiary: #86868b;
+  --text-on-accent: #ffffff;
+  --text-on-inverse: #f5f5f7;
+
+  --line: rgba(0, 0, 0, 0.1);
+  --line-strong: rgba(0, 0, 0, 0.18);
+
+  --accent: #0062d6;
+  --accent-hover: #0053b5;
+  --accent-soft: rgba(0, 98, 214, 0.1);
+
+  --positive: #167a3c;
+  --positive-soft: rgba(22, 122, 60, 0.1);
+  --caution: #8a5a00;
+  --caution-soft: rgba(138, 90, 0, 0.1);
+  --critical: #b3261e;
+  --critical-soft: rgba(179, 38, 30, 0.1);
+
+  /* The transmitted symbol. Maximum contrast, never themed. */
+  --symbol-dark: #000000;
+  --symbol-light: #ffffff;
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.1);
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 140ms;
+  --duration-base: 240ms;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface: #000000;
+    --surface-raised: #131315;
+    --surface-sunken: #1c1c1e;
+    --surface-inverse: #f5f5f7;
+
+    --text-primary: #f5f5f7;
+    --text-secondary: #b0b0b8;
+    --text-tertiary: #86868b;
+    --text-on-inverse: #1d1d1f;
+
+    --line: rgba(255, 255, 255, 0.12);
+    --line-strong: rgba(255, 255, 255, 0.22);
+
+    --accent: #4a9bff;
+    --accent-hover: #6cb0ff;
+    --accent-soft: rgba(74, 155, 255, 0.16);
+
+    --positive: #4ad07d;
+    --positive-soft: rgba(74, 208, 125, 0.16);
+    --caution: #f0b429;
+    --caution-soft: rgba(240, 180, 41, 0.16);
+    --critical: #ff6961;
+    --critical-soft: rgba(255, 105, 97, 0.16);
+
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.55);
+    --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.65);
+  }
+}

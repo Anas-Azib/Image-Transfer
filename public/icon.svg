@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#0062d6" />
+  <g fill="#fff">
+    <path d="M6 6h7v7H6V6Zm2 2v3h3V8H8Z" />
+    <path d="M19 6h7v7h-7V6Zm2 2v3h3V8h-3Z" />
+    <path d="M6 19h7v7H6v-7Zm2 2v3h3v-3H8Z" />
+    <rect x="15" y="6" width="2" height="2" />
+    <rect x="15" y="10" width="2" height="2" />
+    <rect x="15" y="14" width="2" height="2" />
+    <rect x="19" y="15" width="2" height="2" />
+    <rect x="23" y="15" width="2" height="2" />
+    <rect x="6" y="15" width="2" height="2" />
+    <rect x="10" y="15" width="2" height="2" />
+    <rect x="19" y="19" width="3" height="3" />
+    <rect x="23" y="23" width="3" height="3" />
+    <rect x="19" y="24" width="2" height="2" />
+    <rect x="24" y="19" width="2" height="2" />
+  </g>
+</svg>

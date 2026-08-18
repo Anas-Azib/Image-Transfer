@@ -1,0 +1,114 @@
+.page {
+  max-width: var(--content-width);
+  padding: var(--space-7) var(--space-5) var(--space-9);
+  margin: 0 auto;
+}
+
+.intro {
+  max-width: var(--reading-width);
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--text-title);
+  font-weight: 600;
+  letter-spacing: var(--tracking-hero);
+}
+
+.lead {
+  margin-top: var(--space-3);
+  font-size: var(--text-lead);
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.permission {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  padding: var(--space-6);
+  background: var(--surface-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+}
+
+.permissionTitle {
+  font-size: var(--text-section);
+  font-weight: 600;
+}
+
+.permissionBody {
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.permissionList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: var(--text-small);
+  color: var(--text-secondary);
+}
+
+.permissionItem {
+  display: flex;
+  gap: var(--space-2);
+}
+
+.tick {
+  flex-shrink: 0;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.2rem;
+  color: var(--positive);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  align-items: center;
+}
+
+.deviceSelect {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-small);
+  background: var(--surface-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--radius-pill);
+}
+
+.tips {
+  font-size: var(--text-small);
+  line-height: 1.6;
+  color: var(--text-tertiary);
+}
+
+.completeWrap {
+  max-width: 44rem;
+  margin: 0 auto;
+}
+
+@media (max-width: 62rem) {
+  .layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.notice {
+  margin-bottom: var(--space-5);
+}
