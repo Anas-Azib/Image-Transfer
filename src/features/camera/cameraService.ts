@@ -149,18 +149,3 @@ export async function listCameras(): Promise<CameraDevice[]> {
   }
 }
 
-/** Resolves once the element has real dimensions and is producing pixels. */
-export function waitForVideoReady(video: HTMLVideoElement): Promise<void> {
-  if (video.readyState >= HTMLMediaElement.HAVE_CURRENT_DATA && video.videoWidth > 0) {
-    return Promise.resolve();
-  }
-  return new Promise((resolve) => {
-    const done = () => {
-      video.removeEventListener('loadeddata', done);
-      video.removeEventListener('canplay', done);
-      resolve();
-    };
-    video.addEventListener('loadeddata', done);
-    video.addEventListener('canplay', done);
-  });
-}

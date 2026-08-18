@@ -85,7 +85,12 @@ export function useDecoder(): UseDecoderResult {
   const lastDecodeAtRef = useRef(0);
   const lastPartialAtRef = useRef(0);
 
-  const { videoRef, start: startCameraStream, stop: stopCameraStream, state: cameraState } = camera;
+  const {
+    videoElement,
+    start: startCameraStream,
+    stop: stopCameraStream,
+    state: cameraState,
+  } = camera;
 
   const finished = stage === 'complete' || stage === 'reconstructing';
 
@@ -200,11 +205,10 @@ export function useDecoder(): UseDecoderResult {
   // in flight. Both conditions are needed: a completed transfer must not keep
   // decoding, and a stopped camera has nothing to decode from.
   useEffect(() => {
-    const video = videoRef.current;
-    if (cameraState !== 'ready' || !video || finished) return undefined;
+    if (cameraState !== 'ready' || !videoElement || finished) return undefined;
 
     const scanner = new FrameScanner({
-      video,
+      video: videoElement,
       onOutcome: handleOutcome,
       getHints: () => {
         const { gridSize, eccLevel } = receiverRef.current.progress;
@@ -222,7 +226,7 @@ export function useDecoder(): UseDecoderResult {
       scanner.stop();
       if (scannerRef.current === scanner) scannerRef.current = null;
     };
-  }, [cameraState, handleOutcome, videoRef, finished]);
+  }, [cameraState, handleOutcome, videoElement, finished]);
 
   // Publish progress on a timer rather than per frame: the detector needs the
   // main thread more than the UI needs sub-100 ms freshness.

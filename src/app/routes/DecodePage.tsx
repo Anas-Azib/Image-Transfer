@@ -34,11 +34,20 @@ export function DecodePage() {
   const { phase, camera, progress, signal, errorMessage, stalled, image, begin, cancel, restart, discard } =
     decoder;
 
-  const containerRef = useEntranceAnimation<HTMLDivElement>({ deps: [phase] });
-
   const live = camera.state === 'ready';
+  const connecting = phase === 'requesting-camera';
   const scanning = phase === 'searching' || phase === 'receiving';
   const complete = phase === 'complete' && image !== null;
+
+  /**
+   * Which of the three layouts is on screen. The entrance animation is keyed to
+   * this rather than to `phase`, because phase also changes *within* a layout —
+   * searching → receiving fires the moment the first frame lands, and replaying
+   * a fade-and-slide over a live camera viewport at exactly that moment is
+   * jarring precisely when the user is trying to hold the device still.
+   */
+  const view = complete ? 'complete' : live || scanning || connecting ? 'scanning' : 'permission';
+  const containerRef = useEntranceAnimation<HTMLDivElement>({ deps: [view] });
 
   // Releasing the camera on unmount is handled inside useCamera; this covers the
   // in-page transition away from scanning.
@@ -99,7 +108,7 @@ export function DecodePage() {
               </div>
             ) : null}
 
-            {!live && !scanning ? (
+            {!live && !scanning && !connecting ? (
               <section className={styles.permission} data-animate>
                 <h2 className={styles.permissionTitle}>Camera access</h2>
                 <p className={styles.permissionBody}>
@@ -115,13 +124,15 @@ export function DecodePage() {
                   ))}
                 </ul>
                 <div className={styles.actions}>
+                  {/* Once the request is in flight the viewport takes over, so
+                      this panel never needs a pending state of its own. */}
                   <Button
                     variant="primary"
                     size="large"
                     onClick={handleBegin}
-                    disabled={!camera.supported || phase === 'requesting-camera'}
+                    disabled={!camera.supported}
                   >
-                    {phase === 'requesting-camera' ? 'Requesting…' : 'Enable camera'}
+                    Enable camera
                   </Button>
                 </div>
               </section>

@@ -1,9 +1,9 @@
-import type { RefObject } from 'react';
+import type { RefCallback } from 'react';
 import type { ScanSignal } from '@/features/decoder/decoder.types';
 import styles from './CameraViewport.module.css';
 
 export interface CameraViewportProps {
-  videoRef: RefObject<HTMLVideoElement | null>;
+  videoRef: RefCallback<HTMLVideoElement>;
   signal: ScanSignal;
   live: boolean;
 }
@@ -20,8 +20,16 @@ export function CameraViewport({ videoRef, signal, live }: CameraViewportProps) 
 
   return (
     <div className={`${styles.viewport} ${signalClass}`}>
-      {/* muted + playsInline are required for autoplay on iOS. */}
-      <video ref={videoRef} className={styles.video} playsInline muted aria-label="Camera preview" />
+      {/* autoPlay + muted + playsInline are all required before iOS will show
+          an inline camera stream; useCamera sets them imperatively too. */}
+      <video
+        ref={videoRef}
+        className={styles.video}
+        autoPlay
+        playsInline
+        muted
+        aria-label="Camera preview"
+      />
 
       {!live ? (
         <div className={styles.placeholder}>
